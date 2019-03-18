@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;dept_save.jsp&apos; to &apos;info&apos;&#x0D;&#x0A;- Original project: &apos;anim-console&apos;&#x0D;&#x0A;- Destination element: &apos;info&apos;&#x0D;&#x0A;- Original element: &apos;dept_save.jsp&apos;" description="Copy file" element1="src/main/webapp/WEB-INF/jsp/dept/dept_save.jsp" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1534486538729" target="/anim-protal/src/main/webapp/WEB-INF/jsp/info" units="0" version="1.0"/>
+</session>

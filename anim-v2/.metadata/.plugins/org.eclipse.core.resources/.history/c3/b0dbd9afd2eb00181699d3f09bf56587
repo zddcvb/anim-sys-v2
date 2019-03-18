@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yanxi.anim.sys.mapper.AnimAssessmentMapper" >
+  <resultMap id="BaseResultMap" type="com.yanxi.anim.sys.pojo.AnimAssessment" >
+    <result column="assessment_id" property="assessmentId" jdbcType="VARCHAR" />
+    <result column="assessment_month" property="assessmentMonth" jdbcType="INTEGER" />
+    <result column="anim_proj_name" property="animProjName" jdbcType="VARCHAR" />
+    <result column="anim_name" property="animName" jdbcType="VARCHAR" />
+    <result column="anim_level" property="animLevel" jdbcType="VARCHAR" />
+    <result column="anim_group" property="animGroup" jdbcType="VARCHAR" />
+    <result column="employee_id" property="employeeId" jdbcType="VARCHAR" />
+    <result column="editor_assessment_score" property="editorAssessmentScore" jdbcType="INTEGER" />
+    <result column="editor_assessment_reason" property="editorAssessmentReason" jdbcType="VARCHAR" />
+    <result column="animator_assessemt_score" property="animatorAssessemtScore" jdbcType="INTEGER" />
+    <result column="animator_assessment_reason" property="animatorAssessmentReason" jdbcType="VARCHAR" />
+    <result column="designer_assessment_score" property="designerAssessmentScore" jdbcType="INTEGER" />
+    <result column="designer_assessment_reason" property="designerAssessmentReason" jdbcType="VARCHAR" />
+    <result column="anim_total_score" property="animTotalScore" jdbcType="INTEGER" />
+    <result column="anim_total_money" property="animTotalMoney" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="dept_id" property="deptId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    assessment_id, assessment_month, anim_proj_name, anim_name, anim_level, anim_group, 
+    employee_id, editor_assessment_score, editor_assessment_reason, animator_assessemt_score, 
+    animator_assessment_reason, designer_assessment_score, designer_assessment_reason, 
+    anim_total_score, anim_total_money, create_time, update_time, dept_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yanxi.anim.sys.pojo.AnimAssessmentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from anim_assessment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.yanxi.anim.sys.pojo.AnimAssessmentExample" >
+    delete from anim_assessment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yanxi.anim.sys.pojo.AnimAssessment" >
+    insert into anim_assessment (assessment_id, assessment_month, anim_proj_name, 
+      anim_name, anim_level, anim_group, 
+      employee_id, editor_assessment_score, editor_assessment_reason, 
+      animator_assessemt_score, animator_assessment_reason, 
+      designer_assessment_score, designer_assessment_reason, 
+      anim_total_score, anim_total_money, create_time, 
+      update_time, dept_id)
+    values (#{assessmentId,jdbcType=VARCHAR}, #{assessmentMonth,jdbcType=INTEGER}, #{animProjName,jdbcType=VARCHAR}, 
+      #{animName,jdbcType=VARCHAR}, #{animLevel,jdbcType=VARCHAR}, #{animGroup,jdbcType=VARCHAR}, 
+      #{employeeId,jdbcType=VARCHAR}, #{editorAssessmentScore,jdbcType=INTEGER}, #{editorAssessmentReason,jdbcType=VARCHAR}, 
+      #{animatorAssessemtScore,jdbcType=INTEGER}, #{animatorAssessmentReason,jdbcType=VARCHAR}, 
+      #{designerAssessmentScore,jdbcType=INTEGER}, #{designerAssessmentReason,jdbcType=VARCHAR}, 
+      #{animTotalScore,jdbcType=INTEGER}, #{animTotalMoney,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR}, #{deptId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yanxi.anim.sys.pojo.AnimAssessment" >
+    insert into anim_assessment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="assessmentId != null" >
+        assessment_id,
+      </if>
+      <if test="assessmentMonth != null" >
+        assessment_month,
+      </if>
+      <if test="animProjName != null" >
+        anim_proj_name,
+      </if>
+      <if test="animName != null" >
+        anim_name,
+      </if>
+      <if test="animLevel != null" >
+        anim_level,
+      </if>
+      <if test="animGroup != null" >
+        anim_group,
+      </if>
+      <if test="employeeId != null" >
+        employee_id,
+      </if>
+      <if test="editorAssessmentScore != null" >
+        editor_assessment_score,
+      </if>
+      <if test="editorAssessmentReason != null" >
+        editor_assessment_reason,
+      </if>
+      <if test="animatorAssessemtScore != null" >
+        animator_assessemt_score,
+      </if>
+      <if test="animatorAssessmentReason != null" >
+        animator_assessment_reason,
+      </if>
+      <if test="designerAssessmentScore != null" >
+        designer_assessment_score,
+      </if>
+      <if test="designerAssessmentReason != null" >
+        designer_assessment_reason,
+      </if>
+      <if test="animTotalScore != null" >
+        anim_total_score,
+      </if>
+      <if test="animTotalMoney != null" >
+        anim_total_money,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="assessmentId != null" >
+        #{assessmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="assessmentMonth != null" >
+        #{assessmentMonth,jdbcType=INTEGER},
+      </if>
+      <if test="animProjName != null" >
+        #{animProjName,jdbcType=VARCHAR},
+      </if>
+      <if test="animName != null" >
+        #{animName,jdbcType=VARCHAR},
+      </if>
+      <if test="animLevel != null" >
+        #{animLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="animGroup != null" >
+        #{animGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeId != null" >
+        #{employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="editorAssessmentScore != null" >
+        #{editorAssessmentScore,jdbcType=INTEGER},
+      </if>
+      <if test="editorAssessmentReason != null" >
+        #{editorAssessmentReason,jdbcType=VARCHAR},
+      </if>
+      <if test="animatorAssessemtScore != null" >
+        #{animatorAssessemtScore,jdbcType=INTEGER},
+      </if>
+      <if test="animatorAssessmentReason != null" >
+        #{animatorAssessmentReason,jdbcType=VARCHAR},
+      </if>
+      <if test="designerAssessmentScore != null" >
+        #{designerAssessmentScore,jdbcType=INTEGER},
+      </if>
+      <if test="designerAssessmentReason != null" >
+        #{designerAssessmentReason,jdbcType=VARCHAR},
+      </if>
+      <if test="animTotalScore != null" >
+        #{animTotalScore,jdbcType=INTEGER},
+      </if>
+      <if test="animTotalMoney != null" >
+        #{animTotalMoney,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yanxi.anim.sys.pojo.AnimAssessmentExample" resultType="java.lang.Integer" >
+    select count(*) from anim_assessment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update anim_assessment
+    <set >
+      <if test="record.assessmentId != null" >
+        assessment_id = #{record.assessmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.assessmentMonth != null" >
+        assessment_month = #{record.assessmentMonth,jdbcType=INTEGER},
+      </if>
+      <if test="record.animProjName != null" >
+        anim_proj_name = #{record.animProjName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.animName != null" >
+        anim_name = #{record.animName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.animLevel != null" >
+        anim_level = #{record.animLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.animGroup != null" >
+        anim_group = #{record.animGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.employeeId != null" >
+        employee_id = #{record.employeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editorAssessmentScore != null" >
+        editor_assessment_score = #{record.editorAssessmentScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.editorAssessmentReason != null" >
+        editor_assessment_reason = #{record.editorAssessmentReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.animatorAssessemtScore != null" >
+        animator_assessemt_score = #{record.animatorAssessemtScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.animatorAssessmentReason != null" >
+        animator_assessment_reason = #{record.animatorAssessmentReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.designerAssessmentScore != null" >
+        designer_assessment_score = #{record.designerAssessmentScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.designerAssessmentReason != null" >
+        designer_assessment_reason = #{record.designerAssessmentReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.animTotalScore != null" >
+        anim_total_score = #{record.animTotalScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.animTotalMoney != null" >
+        anim_total_money = #{record.animTotalMoney,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptId != null" >
+        dept_id = #{record.deptId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update anim_assessment
+    set assessment_id = #{record.assessmentId,jdbcType=VARCHAR},
+      assessment_month = #{record.assessmentMonth,jdbcType=INTEGER},
+      anim_proj_name = #{record.animProjName,jdbcType=VARCHAR},
+      anim_name = #{record.animName,jdbcType=VARCHAR},
+      anim_level = #{record.animLevel,jdbcType=VARCHAR},
+      anim_group = #{record.animGroup,jdbcType=VARCHAR},
+      employee_id = #{record.employeeId,jdbcType=VARCHAR},
+      editor_assessment_score = #{record.editorAssessmentScore,jdbcType=INTEGER},
+      editor_assessment_reason = #{record.editorAssessmentReason,jdbcType=VARCHAR},
+      animator_assessemt_score = #{record.animatorAssessemtScore,jdbcType=INTEGER},
+      animator_assessment_reason = #{record.animatorAssessmentReason,jdbcType=VARCHAR},
+      designer_assessment_score = #{record.designerAssessmentScore,jdbcType=INTEGER},
+      designer_assessment_reason = #{record.designerAssessmentReason,jdbcType=VARCHAR},
+      anim_total_score = #{record.animTotalScore,jdbcType=INTEGER},
+      anim_total_money = #{record.animTotalMoney,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=VARCHAR},
+      dept_id = #{record.deptId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

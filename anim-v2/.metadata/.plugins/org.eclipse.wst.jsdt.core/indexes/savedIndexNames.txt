@@ -1,0 +1,11 @@
+INDEX VERSION 1.3+G:\anim-v2\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3158182858.index
+3803995423.index
+638462761.index
+1628588050.index
+1691581271.index
+277635085.index
+1486784226.index
+2131106252.index
+2314967090.index
+1077193851.index

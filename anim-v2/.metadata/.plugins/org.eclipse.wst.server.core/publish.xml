@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<publish-info>
+  <server id="anim-console" path="publish0.dat"/>
+  <server id="anim-sso" path="publish2.dat"/>
+  <server id="anim-protal" path="publish1.dat"/>
+</publish-info>

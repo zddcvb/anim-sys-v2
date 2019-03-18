@@ -1,0 +1,7 @@
+package com.yanxi.anim.sys.pojo;
+
+public class AssessmentQuery {
+	private  String employeeName;
+	private String animName;
+	private String animGroup;
+}

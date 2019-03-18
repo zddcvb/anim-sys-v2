@@ -1,0 +1,5 @@
+package com.yanxi.anim.sys.service;
+
+public interface AssessService {
+
+}

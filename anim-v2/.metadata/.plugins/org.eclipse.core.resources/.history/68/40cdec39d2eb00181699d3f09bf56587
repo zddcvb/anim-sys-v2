@@ -1,0 +1,18 @@
+package com.yanxi.anim.sys.service.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.yanxi.anim.sys.pojo.AnimAssessment;
+import com.yanxi.anim.sys.service.AssessService;
+
+@Service
+public class AssessServiceImpl implements AssessService{
+
+	@Override
+	public List<AnimAssessment> findAll() {
+		return null;
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.yanxi.anim.sys.service;
+
+import java.util.List;
+
+import com.yanxi.anim.sys.pojo.AnimAssessment;
+
+public interface AssessService {
+
+	List<AnimAssessment> findAll();
+
+	AnimAssessment findById(String id);
+
+	int insert(AnimAssessment animAssessment);
+
+}

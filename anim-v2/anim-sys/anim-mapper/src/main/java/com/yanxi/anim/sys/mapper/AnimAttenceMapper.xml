@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yanxi.anim.sys.mapper.AnimAttenceMapper" >
+  <resultMap id="BaseResultMap" type="com.yanxi.anim.sys.pojo.AnimAttence" >
+    <id column="attence_id" property="attenceId" jdbcType="VARCHAR" />
+    <result column="attence_date" property="attenceDate" jdbcType="VARCHAR" />
+    <result column="attence_start" property="attenceStart" jdbcType="VARCHAR" />
+    <result column="start_status" property="startStatus" jdbcType="INTEGER" />
+    <result column="attence_end" property="attenceEnd" jdbcType="VARCHAR" />
+    <result column="end_status" property="endStatus" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    attence_id, attence_date, attence_start, start_status, attence_end, end_status, username
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yanxi.anim.sys.pojo.AnimAttenceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from anim_attence
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from anim_attence
+    where attence_id = #{attenceId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from anim_attence
+    where attence_id = #{attenceId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yanxi.anim.sys.pojo.AnimAttenceExample" >
+    delete from anim_attence
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yanxi.anim.sys.pojo.AnimAttence" >
+    insert into anim_attence (attence_id, attence_date, attence_start, 
+      start_status, attence_end, end_status, 
+      username)
+    values (#{attenceId,jdbcType=VARCHAR}, #{attenceDate,jdbcType=VARCHAR}, #{attenceStart,jdbcType=VARCHAR}, 
+      #{startStatus,jdbcType=INTEGER}, #{attenceEnd,jdbcType=VARCHAR}, #{endStatus,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yanxi.anim.sys.pojo.AnimAttence" >
+    insert into anim_attence
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="attenceId != null" >
+        attence_id,
+      </if>
+      <if test="attenceDate != null" >
+        attence_date,
+      </if>
+      <if test="attenceStart != null" >
+        attence_start,
+      </if>
+      <if test="startStatus != null" >
+        start_status,
+      </if>
+      <if test="attenceEnd != null" >
+        attence_end,
+      </if>
+      <if test="endStatus != null" >
+        end_status,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="attenceId != null" >
+        #{attenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceDate != null" >
+        #{attenceDate,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceStart != null" >
+        #{attenceStart,jdbcType=VARCHAR},
+      </if>
+      <if test="startStatus != null" >
+        #{startStatus,jdbcType=INTEGER},
+      </if>
+      <if test="attenceEnd != null" >
+        #{attenceEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="endStatus != null" >
+        #{endStatus,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yanxi.anim.sys.pojo.AnimAttenceExample" resultType="java.lang.Integer" >
+    select count(*) from anim_attence
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update anim_attence
+    <set >
+      <if test="record.attenceId != null" >
+        attence_id = #{record.attenceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attenceDate != null" >
+        attence_date = #{record.attenceDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attenceStart != null" >
+        attence_start = #{record.attenceStart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startStatus != null" >
+        start_status = #{record.startStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.attenceEnd != null" >
+        attence_end = #{record.attenceEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endStatus != null" >
+        end_status = #{record.endStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update anim_attence
+    set attence_id = #{record.attenceId,jdbcType=VARCHAR},
+      attence_date = #{record.attenceDate,jdbcType=VARCHAR},
+      attence_start = #{record.attenceStart,jdbcType=VARCHAR},
+      start_status = #{record.startStatus,jdbcType=INTEGER},
+      attence_end = #{record.attenceEnd,jdbcType=VARCHAR},
+      end_status = #{record.endStatus,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yanxi.anim.sys.pojo.AnimAttence" >
+    update anim_attence
+    <set >
+      <if test="attenceDate != null" >
+        attence_date = #{attenceDate,jdbcType=VARCHAR},
+      </if>
+      <if test="attenceStart != null" >
+        attence_start = #{attenceStart,jdbcType=VARCHAR},
+      </if>
+      <if test="startStatus != null" >
+        start_status = #{startStatus,jdbcType=INTEGER},
+      </if>
+      <if test="attenceEnd != null" >
+        attence_end = #{attenceEnd,jdbcType=VARCHAR},
+      </if>
+      <if test="endStatus != null" >
+        end_status = #{endStatus,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where attence_id = #{attenceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yanxi.anim.sys.pojo.AnimAttence" >
+    update anim_attence
+    set attence_date = #{attenceDate,jdbcType=VARCHAR},
+      attence_start = #{attenceStart,jdbcType=VARCHAR},
+      start_status = #{startStatus,jdbcType=INTEGER},
+      attence_end = #{attenceEnd,jdbcType=VARCHAR},
+      end_status = #{endStatus,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR}
+    where attence_id = #{attenceId,jdbcType=VARCHAR}
+  </update>
+</mapper>

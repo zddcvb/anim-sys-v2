@@ -1,0 +1,41 @@
+package com.yanxi.anim.sys.service.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.yanxi.anim.sys.mapper.AnimAssessmentMapper;
+import com.yanxi.anim.sys.pojo.AnimAssessment;
+import com.yanxi.anim.sys.pojo.AnimAssessmentExample;
+import com.yanxi.anim.sys.service.AssessService;
+
+@Service
+public class AssessServiceImpl implements AssessService{
+	private AnimAssessmentMapper aaMapper;
+
+	@Override
+	public List<AnimAssessment> findAll() {
+		AnimAssessmentExample example=new AnimAssessmentExample();
+		example.createCriteria();
+		List<AnimAssessment> assessments = aaMapper.selectByExample(example);
+		return assessments;
+	}
+
+	@Override
+	public AnimAssessment findById(String id) {
+		AnimAssessment assessment = aaMapper.selectByPrimaryKey(id);
+		return assessment;
+	}
+
+	@Override
+	public int insert(AnimAssessment animAssessment) {
+		int index = aaMapper.insert(animAssessment);
+		return index;
+	}
+
+	@Override
+	public int deleteById(String id) {
+		return 0;
+	}
+
+}
